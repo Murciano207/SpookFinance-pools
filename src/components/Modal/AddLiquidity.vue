@@ -329,49 +329,6 @@ export default {
       if (this.tokenError || this.validationError) return undefined;
       if (!this.transactionReverted) return undefined;
 
-      // FIXME: update this!
-      if (hasToken(this.pool, 'SNX')) {
-        return this.$t('addStakedSNX');
-      }
-      const synths = ['sUSD', 'sBTC', 'sETH', 'sXAU', 'sXAG', 'sDEFI', 'sXMR'];
-      if (synths.some(synth => hasToken(this.pool, synth))) {
-        return this.$t('addSNXUnderwater');
-      }
-      const aTokens = [
-        'aDAI',
-        'aUSDT',
-        'aUSDC',
-        'aSUSD',
-        'aTUSD',
-        'aBUSD',
-        'aBAT',
-        'aETH',
-        'aKNC',
-        'aLEND',
-        'aLINK',
-        'aMANA',
-        'aMKR',
-        'aREP',
-        'aSNX',
-        'aWBTC',
-        'aZRX'
-      ];
-      if (aTokens.some(aToken => hasToken(this.pool, aToken))) {
-        return this.$t('addAAVEUnderwater');
-      }
-      const cTokens = [
-        'cUSDC',
-        'cDAI',
-        'cETH',
-        'cUSDT',
-        'cREP',
-        'cZRX',
-        'cBAT',
-        'cWBTC'
-      ];
-      if (cTokens.some(cToken => hasToken(this.pool, cToken))) {
-        return this.$t('addCompoundUnderwater');
-      }
       return this.$t('addTransferBlocked');
     },
     hasCustomToken() {
