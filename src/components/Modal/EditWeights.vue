@@ -117,7 +117,7 @@ export default {
         const token = this.pool.tokens[this.tokenIndex];
 
         // Return an object here, including the decimals
-        // If it is a BPT, we know it is 18 decimals - and it might not be in the metadata
+        // If it is a YPT, we know it is 18 decimals - and it might not be in the metadata
         //   If it's not in the metadata and we don't pass decimals, it will blow up in Unlock
         return {
           address: token.checksum,
@@ -209,13 +209,13 @@ export default {
     },
     validUpdate() {
       // This calculates and displays all the token transfers this weight update will do
-      // The unlock logic additionally ensures we have approval to transfer (either the token, or the BPT)
+      // The unlock logic additionally ensures we have approval to transfer (either the token, or the YPT)
 
       if (this.is_valid) {
-        // If it is a weight increase, we are depositing tokens and minting BPTs
-        // If it is a weight decrease, we are withdrawing tokens and burning BPTs
+        // If it is a weight increase, we are depositing tokens and minting YPTs
+        // If it is a weight decrease, we are withdrawing tokens and burning YPTs
 
-        // The tokenToSpend logic only cares about which token we're depositing; won't be set if we're burning BPT
+        // The tokenToSpend logic only cares about which token we're depositing; won't be set if we're burning YPT
         // We need the constituent token too, since we are also calculating and displaying tokens coming out of the pool
         const selectedToken = this.pool.tokens[this.tokenIndex];
         const tokenSymbol = this.isWeightDecrease
@@ -236,7 +236,7 @@ export default {
             ).toFixed(2)
           : scale(bnum(this.amountToSpend), -selectedToken.decimals).toFixed(2);
 
-        const bptAmount = this.isWeightDecrease
+        const yptAmount = this.isWeightDecrease
           ? this.amountToSpend
           : calcPoolOutGivenWeightIncrease(
               toWei(totalWeight),
@@ -251,9 +251,9 @@ export default {
             : this.$t('deposit').toLowerCase(),
           tokenAmount: tokenAmount,
           tokenSymbol: tokenSymbol,
-          bptAction: this.isWeightDecrease ? this.$t('burn') : this.$t('mint'),
-          bptAmount: bptAmount,
-          bptSymbol: this.pool.symbol
+          yptAction: this.isWeightDecrease ? this.$t('burn') : this.$t('mint'),
+          yptAmount: yptAmount,
+          yptSymbol: this.pool.symbol
         });
       }
 

@@ -214,7 +214,7 @@ function getAnotherToken(tokens, selectedTokens) {
   const tokenAddresses = Object.keys(tokens);
   for (const tokenAddress of tokenAddresses) {
     const token = tokens[tokenAddress];
-    if (token.symbol === 'ETH') {
+    if (token.symbol === 'BNB') {
       continue;
     }
     if (!selectedTokens.includes(token.address)) {
@@ -251,12 +251,12 @@ export default {
   },
   created() {
     // Initialize an (arbitrary) two-token pool, with weights
-    const dai = getTokenBySymbol('DAI').address;
-    const usdc = getTokenBySymbol('USDC').address;
-    this.tokens = [dai, usdc];
+    const wbnb = getTokenBySymbol('WBNB').address;
+    const busd = getTokenBySymbol('BUSD').address;
+    this.tokens = [wbnb, busd];
     // weights contain percentage values - denorms are calculated later
-    Vue.set(this.weights, dai, '60');
-    Vue.set(this.weights, usdc, '40');
+    Vue.set(this.weights, wbnb, '60');
+    Vue.set(this.weights, busd, '40');
     this.loading = false;
   },
   computed: {

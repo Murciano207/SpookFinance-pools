@@ -4,7 +4,7 @@
       <Token
         v-if="pool.isWhitelisted()"
         :custom="true"
-        :address="pool.getBptAddress()"
+        :address="pool.getYptAddress()"
         size="44"
         class="mr-0 mr-md-3"
       />
@@ -16,7 +16,7 @@
       />
     </div>
     <div>
-      <a :href="_etherscanLink(pool.getBptAddress(), 'token')" target="_blank">
+      <a :href="_bscscanLink(pool.getYptAddress(), 'token')" target="_blank">
         <span
           v-if="pool.config.name || pool.metadata.name"
           v-text="_shorten(pool.config.name || pool.metadata.name, 24)"
@@ -32,7 +32,7 @@
         <Icon name="external-link" size="16" class="ml-1 mr-2" />
       </a>
       <UiLabel v-if="!pool.metadata.finalized" v-text="pool.getTypeStr()" />
-      <h3 v-text="_num(pool.getBptPrice(), 'usd-long')" />
+      <h3 v-text="_num(pool.getYptPrice(), 'usd-long')" />
     </div>
   </div>
 </template>

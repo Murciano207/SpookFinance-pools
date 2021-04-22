@@ -4,20 +4,13 @@ import { Web3Provider } from '@ethersproject/providers';
 import { Contract } from '@ethersproject/contracts';
 import { AddressZero } from '@ethersproject/constants';
 import { Interface } from '@ethersproject/abi';
-import store from '@/store';
+// import store from '@/store';
 import abi from '@/helpers/abi';
 import config from '@/config';
 import provider from '@/helpers/provider';
-import wsProvider from '@/helpers/wsProvider';
-import { multicall } from '@/_balancer/utils';
+import { multicall } from '@/_yogi/utils';
 
 let auth;
-
-if (wsProvider) {
-  wsProvider.on('block', blockNumber => {
-    store.commit('GET_BLOCK_SUCCESS', blockNumber);
-  });
-}
 
 const state = {
   injectedLoaded: false,
@@ -170,7 +163,7 @@ const actions = {
     commit('LOGOUT');
   },
   initTokenMetadata: async ({ commit }) => {
-    const invalids = ['0xD46bA6D942050d489DBd938a2C909A5d5039A161'];
+    const invalids = ['0xbBbBBBBbbBBBbbbBbbBbbbbBBbBbbbbBbBbbBBbB'];
     const metadata = Object.fromEntries(
       Object.entries(config.tokens).map(tokenEntry => {
         const { decimals, symbol, name } = tokenEntry[1] as any;
@@ -294,7 +287,7 @@ const actions = {
     const testToken = new Interface(abi.TestToken);
     const tokensToFetch = tokens
       ? tokens
-      : Object.keys(state.balances).filter(token => token !== 'ether');
+      : Object.keys(state.balances).filter(token => token !== 'bnb');
     tokensToFetch.forEach(token => {
       calls.push([
         // @ts-ignore
@@ -337,19 +330,19 @@ const actions = {
     const testToken = new Interface(abi.TestToken);
     const tokensToFetch = tokens
       ? tokens
-      : Object.keys(state.balances).filter(token => token !== 'ether');
+      : Object.keys(state.balances).filter(token => token !== 'bnb');
     tokensToFetch.forEach(token => {
       // @ts-ignore
       calls.push([token, testToken.encodeFunctionData('balanceOf', [address])]);
     });
     promises.push(multi.aggregate(calls));
-    promises.push(multi.getEthBalance(address));
+    promises.push(multi.getBnbBalance(address));
     const balances: any = {};
     try {
       // @ts-ignore
-      const [[, response], ethBalance] = await Promise.all(promises);
+      const [[, response], bnbBalance] = await Promise.all(promises);
       // @ts-ignore
-      balances.ether = ethBalance.toString();
+      balances.bnb = bnbBalance.toString();
       let i = 0;
       response.forEach(value => {
         if (tokensToFetch && tokensToFetch[i]) {

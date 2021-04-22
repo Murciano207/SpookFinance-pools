@@ -10,7 +10,6 @@ import {
 } from '@/helpers/utils';
 import BigNumber from '@/helpers/bignumber';
 import { makeProxyTransaction } from '@/helpers/web3';
-import { setGoal } from '@/helpers/fathom';
 
 const mutations = {
   CREATE_PROXY_REQUEST() {
@@ -202,23 +201,23 @@ const mutations = {
   APPROVE_FAILURE(_state, payload) {
     console.debug('APPROVE_FAILURE', payload);
   },
-  WRAP_ETH_REQUEST() {
-    console.debug('WRAP_ETH_REQUEST');
+  WRAP_BNB_REQUEST() {
+    console.debug('WRAP_BNB_REQUEST');
   },
-  WRAP_ETH_SUCCESS() {
-    console.debug('WRAP_ETH_SUCCESS');
+  WRAP_BNB_SUCCESS() {
+    console.debug('WRAP_BNB_SUCCESS');
   },
-  WRAP_ETH_FAILURE(_state, payload) {
-    console.debug('WRAP_ETH_FAILURE', payload);
+  WRAP_BNB_FAILURE(_state, payload) {
+    console.debug('WRAP_BNB_FAILURE', payload);
   },
-  UNWRAP_ETH_REQUEST() {
-    console.debug('UNWRAP_ETH_REQUEST');
+  UNWRAP_BNB_REQUEST() {
+    console.debug('UNWRAP_BNB_REQUEST');
   },
-  UNWRAP_ETH_SUCCESS() {
-    console.debug('UNWRAP_ETH_SUCCESS');
+  UNWRAP_BNB_SUCCESS() {
+    console.debug('UNWRAP_BNB_SUCCESS');
   },
-  UNWRAP_ETH_FAILURE(_state, payload) {
-    console.debug('UNWRAP_ETH_FAILURE', payload);
+  UNWRAP_BNB_FAILURE(_state, payload) {
+    console.debug('UNWRAP_BNB_FAILURE', payload);
   }
 };
 
@@ -237,7 +236,6 @@ const actions = {
         params,
         title: 'Create proxy'
       });
-      setGoal('EV1XI0VM');
       dispatch('notify', ['green', "You've successfully created a proxy"]);
       dispatch('getProxy');
       commit('CREATE_PROXY_SUCCESS');
@@ -281,7 +279,6 @@ const actions = {
       );
       const params = makeProxyTransaction(dsProxyAddress, underlyingParams);
       await dispatch('processTransaction', { params, title: 'Create a pool' });
-      setGoal('MGYMGNXQ');
       dispatch('notify', ['green', "You've successfully created a pool"]);
       commit('CREATE_POOL_SUCCESS');
     } catch (e) {
@@ -360,7 +357,6 @@ const actions = {
         title: 'Create a smart pool'
       });
       await tx.wait(6);
-      setGoal('H854WJCE');
       dispatch('notify', ['green', i18n.tc('successCreatePool')]);
       commit('CREATE_SMART_POOL_SUCCESS');
     } catch (e) {
@@ -392,7 +388,6 @@ const actions = {
         dispatch('getBalances'),
         dispatch('getUserPoolShares')
       ]);
-      setGoal('OJGWYYDX');
       dispatch('notify', ['green', "You've successfully added liquidity"]);
       commit('JOIN_POOL_SUCCESS');
     } catch (e) {
@@ -424,7 +419,6 @@ const actions = {
         dispatch('getBalances'),
         dispatch('getUserPoolShares')
       ]);
-      setGoal('VW5X6ROK');
       dispatch('notify', ['green', "You've successfully added liquidity"]);
       commit('JOINSWAP_EXTERN_AMOUNT_SUCCESS');
     } catch (e) {
@@ -454,7 +448,6 @@ const actions = {
         dispatch('getBalances'),
         dispatch('getUserPoolShares')
       ]);
-      setGoal('WL0NJSJZ');
       dispatch('notify', ['green', "You've successfully removed liquidity"]);
       commit('EXIT_POOL_SUCCESS');
     } catch (e) {
@@ -484,7 +477,6 @@ const actions = {
         dispatch('getBalances'),
         dispatch('getUserPoolShares')
       ]);
-      setGoal('IFE3QZMO');
       dispatch('notify', ['green', "You've successfully removed liquidity"]);
       commit('EXITSWAP_POOL_AMOUNT_IN_SUCCESS');
     } catch (e) {
@@ -833,7 +825,6 @@ const actions = {
         title: `Approve ${symbol}`
       });
       dispatch('getAllowances', [token]);
-      setGoal('R4TD1ELX');
       dispatch('notify', ['green', `You've successfully unlocked ${symbol}`]);
       commit('APPROVE_SUCCESS');
     } catch (e) {
@@ -843,57 +834,55 @@ const actions = {
     }
   },
   wrap: async ({ commit, dispatch }, amount) => {
-    commit('WRAP_ETH_REQUEST');
+    commit('WRAP_BNB_REQUEST');
     try {
       const params = [
-        'Weth',
-        config.addresses.weth,
+        'WBNB',
+        config.addresses.wbnb,
         'deposit',
         [],
         { value: toWei(amount).toString() }
       ];
       await dispatch('processTransaction', {
         params,
-        title: 'Wrap ETH to WETH'
+        title: 'Wrap BNB to WBNB'
       });
       await dispatch('getBalances');
-      setGoal('KFAFBADQ');
       dispatch('notify', [
         'green',
-        `You've successfully wrapped ${amount} ether`
+        `You've successfully wrapped ${amount} bnb`
       ]);
-      commit('WRAP_ETH_SUCCESS');
+      commit('WRAP_BNB_SUCCESS');
     } catch (e) {
       if (!e || isTxReverted(e)) return e;
       dispatch('notify', ['red', i18n.tc('failureOops')]);
-      commit('WRAP_ETH_FAILURE', e);
+      commit('WRAP_BNB_FAILURE', e);
     }
   },
   unwrap: async ({ commit, dispatch }, amount) => {
-    commit('UNWRAP_ETH_REQUEST');
+    commit('UNWRAP_BNB_REQUEST');
     try {
       const params = [
-        'Weth',
-        config.addresses.weth,
+        'WBNB',
+        config.addresses.wbnb,
         'withdraw',
         [toWei(amount).toString()],
         {}
       ];
       await dispatch('processTransaction', {
         params,
-        title: 'Unwrap WETH to ETH'
+        title: 'Unwrap WBNB to BNB'
       });
       await dispatch('getBalances');
-      setGoal('XSBEFNTT');
       dispatch('notify', [
         'green',
-        `You've successfully unwrapped ${amount} ether`
+        `You've successfuetherlly unwrapped ${amount} bnb`
       ]);
-      commit('UNWRAP_ETH_SUCCESS');
+      commit('UNWRAP_BNB_SUCCESS');
     } catch (e) {
       if (!e || isTxReverted(e)) return e;
       dispatch('notify', ['red', i18n.tc('failureOops')]);
-      commit('UNWRAP_ETH_FAILURE', e);
+      commit('UNWRAP_BNB_FAILURE', e);
     }
   }
 };

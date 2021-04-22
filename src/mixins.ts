@@ -28,11 +28,11 @@ export default {
     _trunc(value: number, decimals: number): number {
       return trunc(value, decimals);
     },
-    _etherscanLink(str: string, type = 'address'): string {
+    _bscscanLink(str: string, type = 'address'): string {
       return `${config.explorer}/${type}/${str}`;
     },
     _ticker(address: string): string {
-      if (address === 'ether') return 'ETH';
+      if (address === 'bnb') return 'BNB';
       const token = config.tokens[address];
       return token ? token.symbol : this._shortenAddress(address);
     },

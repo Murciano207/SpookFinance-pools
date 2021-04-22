@@ -39,8 +39,8 @@ export default {
   props: ['pool', 'bPool', 'token'],
   computed: {
     poolTokenBalance() {
-      const bptAddress = this.bPool.getBptAddress();
-      const balance = this.web3.balances[getAddress(bptAddress)];
+      const yptAddress = this.bPool.getYptAddress();
+      const balance = this.web3.balances[getAddress(yptAddress)];
       return normalizeBalance(balance || '0', 18);
     },
     totalShares() {

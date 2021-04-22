@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { getTokenLogoUrl } from '@/_balancer/utils';
+import { getTokenLogoUrl } from '@/_yogi/utils';
 
 export default {
   props: ['address', 'symbol', 'size', 'custom'],
@@ -35,8 +35,9 @@ export default {
       };
     },
     tokenLogoUrl() {
-      if (this.custom)
-        return `https://raw.githubusercontent.com/balancer-labs/assets/master/assets/${this.address.toLowerCase()}.png`;
+      if (this.custom) {
+        return `https://raw.githubusercontent.com/yogi/yogi-assets/master/assets/${this.address.toLowerCase()}.png`;
+      }
       return getTokenLogoUrl(this.address);
     }
   },

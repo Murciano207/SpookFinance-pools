@@ -70,7 +70,7 @@
           "type": "address"
         }
       ],
-      "name": "getEthBalance",
+      "name": "getBnbBalance",
       "outputs": [
         {
           "name": "balance",

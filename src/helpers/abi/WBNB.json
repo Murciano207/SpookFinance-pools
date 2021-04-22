@@ -1,5 +1,5 @@
 {
-  "contractName": "Weth",
+  "contractName": "WBNB",
   "abi": [
     {
       "constant": true,

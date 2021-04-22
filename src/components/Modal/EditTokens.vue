@@ -53,7 +53,7 @@
 
         <ButtonUnlock
           v-if="allowance < poolAmountIn"
-          :tokenAddress="pool.getBptAddress()"
+          :tokenAddress="pool.getYptAddress()"
           :amount="poolAmountIn"
           :decimals="18"
           @approved="allowance = poolAmountIn"
@@ -129,9 +129,9 @@ export default {
       this.pendingRemove = tokenAddress;
       this.pendingWeight = tokenWeight;
       this.step = 1;
-      const allowances = await this.getAllowances([this.pool.getBptAddress()]);
+      const allowances = await this.getAllowances([this.pool.getYptAddress()]);
       this.allowance = parseInt(
-        allowances[this.pool.getBptAddress()][this.web3.dsProxyAddress]
+        allowances[this.pool.getYptAddress()][this.web3.dsProxyAddress]
       );
     }
   }

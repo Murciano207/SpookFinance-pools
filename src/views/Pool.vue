@@ -60,7 +60,7 @@
 import Vue from 'vue';
 import { mapActions } from 'vuex';
 import { getAddress } from '@ethersproject/address';
-import Pool from '@/_balancer/pool';
+import Pool from '@/_yogi/pool';
 import { bnum, scale } from '@/helpers/utils';
 
 export default {
@@ -115,7 +115,7 @@ export default {
       'getAllowances',
       'getPoolBalances',
       'loadTokenMetadata',
-      'loadPricesByAddress'
+      'loadPricesBySymbol'
     ]),
     openAddLiquidityModal() {
       this.modalAddLiquidityOpen = true;
@@ -136,13 +136,13 @@ export default {
       );
       if (unknownTokens.length > 0) {
         await this.loadTokenMetadata(unknownTokens);
-        await this.loadPricesByAddress(unknownTokens);
+        await this.loadPricesBySymbol(unknownTokens);
       }
       if (this.web3.account) {
         const data = await Promise.all([
           this.getBalances([
             ...this.pool.tokensList,
-            getAddress(this.bPool.getBptAddress())
+            getAddress(this.bPool.getYptAddress())
           ]),
           this.getAllowances(this.pool.tokensList),
           this.getPoolBalances({

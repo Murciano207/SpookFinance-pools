@@ -3,7 +3,7 @@
     <Container class="d-flex mb-3">
       <div class="flex-auto">
         <h3 v-text="$t('myWallet')" />
-        <a :href="_etherscanLink(web3.account)" target="_blank">
+        <a :href="_bscscanLink(web3.account)" target="_blank">
           <span v-text="_shortenAddress(web3.account)" />
           <Icon name="external-link" size="16" class="ml-1 mr-2" />
         </a>
@@ -25,14 +25,14 @@
           <div v-text="balance.symbol" class="text-gray" />
         </div>
         <div class="flex-auto text-left">
-          <div v-if="balance.address !== 'ether'" class="flex-auto">
+          <div v-if="balance.address !== 'bnb'" class="flex-auto">
             <UiButton
-              v-if="balance.address === config.addresses.weth"
+              v-if="balance.address === config.addresses.wbnb"
               @click="[(modalWrapperOpen = true), (side = 2)]"
               type="button"
               class="button-primary button-sm ml-2"
             >
-              Unwrap to ETH
+              Unwrap to BNB
             </UiButton>
           </div>
           <div v-else class="flex-auto">
@@ -41,7 +41,7 @@
               type="button"
               class="button-primary button-sm ml-2"
             >
-              Wrap to WETH
+              Wrap to WBNB
             </UiButton>
           </div>
         </div>
@@ -57,7 +57,7 @@
     <Container class="d-flex mb-3">
       <div v-if="web3.dsProxyAddress" class="flex-auto">
         <h3 v-text="$t('myProxy')" />
-        <a :href="_etherscanLink(web3.dsProxyAddress)" target="_blank">
+        <a :href="_bscscanLink(web3.dsProxyAddress)" target="_blank">
           <span v-text="web3.dsProxyAddress" />
           <Icon name="external-link" size="16" class="ml-1 mr-2" />
         </a>
@@ -88,7 +88,7 @@ export default {
     balances() {
       const balances = Object.entries(this.web3.balances)
         .filter(
-          ([address]) => address !== 'ether' && this.web3.tokenMetadata[address]
+          ([address]) => address !== 'bnb' && this.web3.tokenMetadata[address]
         )
         .map(([address, denormBalance]) => {
           const price = this.price.values[address];
@@ -106,16 +106,22 @@ export default {
           };
         })
         .filter(({ value }) => value > 0.001);
-      const ethPrice = this.price.values[this.config.addresses.weth];
-      const ethBalance = formatUnits(this.web3.balances['ether'] || 0, 18);
+      const bnbPrice = this.price.values[this.config.addresses.wbnb];
+
+      // FIXME: debugging wbnb price
+      console.log('this.price.values', this.price.values);
+      console.log('this.config.addresses.wbnb', this.config.addresses.wbnb);
+      console.log('bnbPrice', this.config);
+
+      const bnbBalance = formatUnits(this.web3.balances['bnb'] || 0, 18);
       return [
         {
-          address: 'ether',
-          name: 'ETH',
-          symbol: 'ETH',
-          price: ethPrice,
-          balance: ethBalance,
-          value: ethPrice * ethBalance
+          address: 'bnb',
+          name: 'BNB',
+          symbol: 'BNB',
+          price: bnbPrice,
+          balance: bnbBalance,
+          value: bnbPrice * bnbBalance
         },
         ...balances
       ];

@@ -1,6 +1,7 @@
 import { JsonRpcProvider } from '@ethersproject/providers';
 import config from '@/config';
 
-const provider = new JsonRpcProvider(config.rpcUrl);
+// TODO: randomize rpc
+const provider = new JsonRpcProvider(config.rpc[0]);
 
 export default provider;

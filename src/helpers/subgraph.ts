@@ -2,7 +2,6 @@ import merge from 'lodash/merge';
 import cloneDeep from 'lodash/cloneDeep';
 import { jsonToGraphQLQuery } from 'json-to-graphql-query';
 import queries from '@/helpers/queries.json';
-import { setGoal } from '@/helpers/fathom';
 import config from '@/config';
 
 export async function request(key: string | null, jsonQuery: any = {}) {
@@ -25,7 +24,6 @@ export async function request(key: string | null, jsonQuery: any = {}) {
     const { data } = await res.json();
     return data;
   } catch (e) {
-    setGoal('TPVLQU4A');
     return Promise.reject(e);
   }
 }

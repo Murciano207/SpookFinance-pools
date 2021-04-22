@@ -24,15 +24,10 @@ export async function ipfsGet(
 const gateway = process.env.VUE_APP_IPFS_NODE || 'cloudflare-ipfs.com';
 
 export const constants = {
-  1: {
-    merkleRedeem: '0x6d19b2bF3A36A61530909Ae65445a906D98A2Fa8',
+  56: {
+    merkleRedeem: '0xee3825780068607893328E11130F9D7071494B19',
     snapshot:
       'https://storageapi.fleek.co/balancer-team-bucket/balancer-claim/snapshot'
-  },
-  42: {
-    merkleRedeem: '0x3bc73D276EEE8cA9424Ecb922375A0357c1833B3',
-    snapshot:
-      'https://storageapi.fleek.co/balancer-team-bucket/balancer-claim-kovan/snapshot'
   }
 };
 

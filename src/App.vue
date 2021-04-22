@@ -23,12 +23,10 @@
 
 <script>
 import { mapActions } from 'vuex';
-import { pageView } from '@/helpers/fathom';
 
 export default {
   watch: {
     $route() {
-      pageView();
       this.hideSidebar();
     },
     'ui.modalOpen': function(val) {

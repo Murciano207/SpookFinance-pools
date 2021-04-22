@@ -1,6 +1,6 @@
 import { bnum } from '@/helpers/utils';
 import { BigNumber } from 'bignumber.js';
-import { BAL_TOKEN, uncappedTokens, equivalentSets } from './tokens';
+import { YOGI_TOKEN, uncappedTokens, equivalentSets } from './tokens';
 
 // This code is suspiciously similar to bal-mining-scripts
 // If that changes, change this as well!
@@ -24,7 +24,7 @@ function getStakingBoostOfPair(
   weight2: BigNumber
 ) {
   if (
-    token1 == BAL_TOKEN[chainId] &&
+    token1 == YOGI_TOKEN[chainId] &&
     uncappedTokens[chainId].includes(token2)
   ) {
     return balMultiplier
@@ -32,7 +32,7 @@ function getStakingBoostOfPair(
       .plus(weight2)
       .div(weight1.plus(weight2));
   } else if (
-    token2 == BAL_TOKEN[chainId] &&
+    token2 == YOGI_TOKEN[chainId] &&
     uncappedTokens[chainId].includes(token1)
   ) {
     return weight1

@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import pools from '@balancer-labs/assets/data/pools.json';
+import pools from 'yogi-assets/data/pools.json';
 import {
   amplAddress,
   clone,

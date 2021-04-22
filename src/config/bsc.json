@@ -1,0 +1,51 @@
+{
+  "network": "bsc",
+  "chainId": 56,
+  "defaultPrecision": 6,
+  "rpc": [
+    "https://bsc-dataseed.binance.org/",
+    "https://bsc-dataseed1.defibit.io/",
+    "https://bsc-dataseed1.ninicoin.io/",
+    "https://bsc-dataseed2.defibit.io/",
+    "https://bsc-dataseed3.defibit.io/",
+    "https://bsc-dataseed4.defibit.io/",
+    "https://bsc-dataseed2.ninicoin.io/",
+    "https://bsc-dataseed3.ninicoin.io/",
+    "https://bsc-dataseed4.ninicoin.io/",
+    "https://bsc-dataseed1.binance.org/",
+    "https://bsc-dataseed2.binance.org/",
+    "https://bsc-dataseed3.binance.org/",
+    "https://bsc-dataseed4.binance.org/"  
+  ],
+  "subgraphUrl": "https://thegraph.com/explorer/subgraph/yogi-fi/yogi-subgraph",
+  "explorer": "https://bscscan.com  ",
+  "exchangeUrl": "http://exchange.yogi.fi",
+  "addresses": {
+    "bFactory": "0x63BA45F4Af4Ca1B49BEA0c8d434CFcB0F5f6F828",
+    "bActions": "0xadEED4642549e69a695C866EfAd81841a61fF226",
+    "dsProxyRegistry": "0x4bB55f75dF311212988eE357Aa2F576A5236c116",
+    "proxy": "0xa7E44F96bF4838d10C9ed77888A9046C12082540",
+    "crpFactory": "0x6d10B040339032B9761F97D29C428Ad6b6d86eaF",
+    "wbnb": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+    "multicall": "0x55eEA7E9cd7139a93B486446f16d660368F99b0E"
+  },
+  "connectors": {
+    "injected": {
+      "name": "MetaMask",
+      "logo": "https://raw.githubusercontent.com/yogi-fi/yogi-assets/master/connectors/metamask.png" 
+    },
+    "walletconnect": {
+      "name": "WalletConnect",
+      "logo": "https://raw.githubusercontent.com/yogi-fi/yogi-assets/master/connectors/walletconnect.png",
+      "options": {
+        "rpc": {
+          "56": "https://bsc-dataseed.binance.org/"
+        }
+      }
+    },
+    "binancewallet": {
+      "name": "Binance Chain Wallet",
+      "logo": "https://raw.githubusercontent.com/yogi-fi/yogi-assets/master/connectors/binancewallet.svg"
+    }
+  }
+}

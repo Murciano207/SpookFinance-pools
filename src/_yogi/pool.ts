@@ -1,5 +1,5 @@
 import merge from 'lodash/merge';
-import pools from '@balancer-labs/assets/data/pools.json';
+import pools from 'yogi-assets/data/pools.json';
 import { getAddress, isAddress } from '@ethersproject/address';
 import { multicall, subgraphRequest } from './utils';
 import provider from '@/helpers/provider';
@@ -36,7 +36,7 @@ export default class Pool {
       : 'Private';
   }
 
-  getBptPrice() {
+  getYptPrice() {
     if (
       !this.metadata.liquidity ||
       !this.metadata.totalShares ||
@@ -52,8 +52,8 @@ export default class Pool {
     return this.metadata.crp;
   }
 
-  getBptAddress() {
-    if (this.config.bptAddress) return this.config.bptAddress;
+  getYptAddress() {
+    if (this.config.yptAddress) return this.config.yptAddress;
     return this.isCrp() ? this.metadata.controller : this.address;
   }
 
@@ -70,7 +70,7 @@ export default class Pool {
   }
 
   async getNodeMetadata() {
-    const address = this.getBptAddress();
+    const address = this.getYptAddress();
     if (this.isCrp()) {
       const [
         publicSwap,

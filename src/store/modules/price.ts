@@ -1,5 +1,4 @@
 import Vue from 'vue';
-import { getAddress } from '@ethersproject/address';
 import config from '@/config';
 
 const ENDPOINT = 'https://api.coingecko.com/api/v3';
@@ -49,22 +48,43 @@ const actions = {
     }
     commit('GET_PRICE_SUCCESS', prices);
   },
+
   loadPricesByAddress: async ({ commit }, payload) => {
     commit('GET_PRICE_REQUEST');
-    const contractString = payload.join('%2C');
+    // FIXME: implement a method that calculates the asset price based on a contract hash.
+    commit('GET_PRICE_SUCCESS', {});
+  },
+
+  loadPricesBySymbol: async ({ commit }, payload) => {
+    commit('GET_PRICE_REQUEST');
+
+    console.log('loadPriceBySymbol [payload: ', payload, ']');
+
     let data;
     try {
-      const url = `${ENDPOINT}/simple/token_price/ethereum?contract_addresses=${contractString}&vs_currencies=usd`;
+      const url = `https://mirror.yogi.fi/pancakeswap`;
       const response = await fetch(url);
       data = await response.json();
     } catch (e) {
       return;
     }
-    const prices = {};
-    for (const address in data) {
-      const price = data[address].usd;
-      prices[getAddress(address)] = price;
+
+    const symToAddressMap = {};
+    for (const address in config.tokens) {
+      const sym = config.tokens[address].symbol;
+      if (!sym) {
+        continue;
+      }
+      symToAddressMap[sym] = address;
     }
+
+    const prices = {};
+    for (const id in data) {
+      const price = data[id];
+      const address = symToAddressMap[id];
+      prices[address] = price;
+    }
+
     commit('GET_PRICE_SUCCESS', prices);
   }
 };

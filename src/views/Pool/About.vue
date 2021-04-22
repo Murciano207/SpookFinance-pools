@@ -105,7 +105,7 @@
       />
       <h5>
         <a
-          :href="_etherscanLink(bPool.metadata.controller, 'token')"
+          :href="_bscscanLink(bPool.metadata.controller, 'token')"
           target="_blank"
           class="text-white"
         >
@@ -119,7 +119,7 @@
       <div v-text="$t('smartPoolController')" class="mb-2" />
       <h5>
         <a
-          :href="_etherscanLink(bPool.metadata.crpController)"
+          :href="_bscscanLink(bPool.metadata.crpController)"
           target="_blank"
           class="text-white"
         >
@@ -133,7 +133,7 @@
       <div v-text="$t('creationDate')" class="mb-2" />
       <h5>
         <a
-          :href="_etherscanLink(bPool.metadata.tx, 'tx')"
+          :href="_bscscanLink(bPool.metadata.tx, 'tx')"
           target="_blank"
           class="text-white"
         >
@@ -144,10 +144,10 @@
     </div>
     <template v-if="bPool.metadata.finalized">
       <div class="mb-3">
-        <div v-text="$t('bptAsset')" class="mb-2" />
+        <div v-text="$t('yptAsset')" class="mb-2" />
         <h5>
           <a
-            :href="_etherscanLink(bPool.address, 'token')"
+            :href="_bscscanLink(bPool.address, 'token')"
             target="_blank"
             class="text-white"
           >
@@ -158,7 +158,7 @@
         </h5>
       </div>
       <div class="mb-3">
-        <div v-text="$t('bptTotalSupply')" class="mb-2" />
+        <div v-text="$t('yptTotalSupply')" class="mb-2" />
         <h5 v-text="_num(bPool.metadata.totalShares)" class="text-white" />
       </div>
     </template>

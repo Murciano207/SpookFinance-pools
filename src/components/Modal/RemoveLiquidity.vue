@@ -154,8 +154,8 @@ export default {
   },
   computed: {
     poolTokenBalance() {
-      const bptAddress = this.bPool.getBptAddress();
-      const balance = this.web3.balances[getAddress(bptAddress)];
+      const yptAddress = this.bPool.getYptAddress();
+      const balance = this.web3.balances[getAddress(yptAddress)];
       return normalizeBalance(balance || '0', 18);
     },
     totalShares() {
@@ -297,7 +297,7 @@ export default {
     ...mapActions(['exitPool', 'exitswapPoolAmountIn']),
     async handleSubmit() {
       this.loading = true;
-      const poolAddress = this.bPool.getBptAddress();
+      const poolAddress = this.bPool.getYptAddress();
       if (this.isMultiAsset) {
         await this.exitPool({
           poolAddress,

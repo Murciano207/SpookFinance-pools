@@ -15,9 +15,12 @@ export const POOL_TOKENS_DECIMALS = 18;
 export const GAS_LIMIT_BUFFER = 0.1;
 export const MAX =
   '115792089237316195423570985008687907853269984665640564039457.584007913129639935';
+
+// FIXME: replace this
 export const EDIT_POOL_GOOGLE_FORM =
   'https://docs.google.com/forms/d/e/1FAIpQLSe_sIVqZCL0rO--8u3PUUNGuxZ68LviAZBtrqV4gVTeTxzHCA/viewform';
 
+// FIXME: replace this
 export const amplAddress = '0xD46bA6D942050d489DBd938a2C909A5d5039A161';
 export const validAmplPools = ['0xa751a143f8fe0a108800bfb915585e4255c2fe80'];
 
@@ -146,6 +149,8 @@ export function formatPool(pool) {
 
 export async function getMarketChartFromCoinGecko(address) {
   const ratePerDay = {};
+
+  // FIXME: market url
   const uri = `https://api.coingecko.com/api/v3/coins/ethereum/contract/${address}/market_chart?vs_currency=usd&days=60`;
   try {
     const marketChart = await fetch(uri).then(res => res.json());
@@ -171,7 +176,7 @@ export function isValidAddress(str) {
 }
 
 export function delay(ms) {
-  return new Promise(resolve => setTimeout(() => resolve(), ms));
+  return new Promise(resolve => setTimeout(() => resolve, ms));
 }
 
 export function clone(item) {
@@ -276,7 +281,8 @@ export function blockNumberToTimestamp(
 ) {
   const AVG_BLOCK_TIMES = {
     1: 13,
-    42: 5
+    42: 5,
+    56: 3
   };
   const avgBlockTime = AVG_BLOCK_TIMES[config.chainId];
   return currentTime + avgBlockTime * 1000 * (blockNumber - currentBlockNumber);

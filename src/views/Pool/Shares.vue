@@ -16,7 +16,7 @@
           <div class="text-left flex-auto">
             <a
               :href="
-                `${_etherscanLink(pool.id, 'token')}?a=${share.userAddress.id}`
+                `${_bscscanLink(pool.id, 'token')}?a=${share.userAddress.id}`
               "
               target="_blank"
               class="text-white"
@@ -28,10 +28,10 @@
           </div>
           <div class="column">
             <UiNum :value="share.balance" class="mr-1" />
-            {{ $t('bpt') }}
+            {{ $t('ypt') }}
           </div>
           <UiNum
-            :value="bptValue * share.balance"
+            :value="yptValue * share.balance"
             format="price"
             class="column hide-sm"
           />
@@ -73,7 +73,7 @@ export default {
     poolLiquidity() {
       return getPoolLiquidity(this.pool, this.price.values);
     },
-    bptValue() {
+    yptValue() {
       return parseInt(this.poolLiquidity) / this.pool.totalShares;
     }
   },

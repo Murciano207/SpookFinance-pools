@@ -226,8 +226,8 @@ export default {
   },
   computed: {
     poolTokenBalance() {
-      const bptAddress = this.bPool.getBptAddress();
-      const balance = this.web3.balances[getAddress(bptAddress)];
+      const yptAddress = this.bPool.getYptAddress();
+      const balance = this.web3.balances[getAddress(yptAddress)];
       return normalizeBalance(balance || '0', 18);
     },
     totalShares() {
@@ -250,8 +250,8 @@ export default {
 
       const poolTokens = this.poolTokens
         ? bnum(this.poolTokens)
-          .div('1e18')
-          .toNumber()
+            .div('1e18')
+            .toNumber()
         : 0;
       const future = (poolSharesFrom + poolTokens) / (totalShares + poolTokens);
       return {
@@ -328,6 +328,8 @@ export default {
     transferError() {
       if (this.tokenError || this.validationError) return undefined;
       if (!this.transactionReverted) return undefined;
+
+      // FIXME: update this!
       if (hasToken(this.pool, 'SNX')) {
         return this.$t('addStakedSNX');
       }
@@ -569,7 +571,7 @@ export default {
     },
     async handleSubmit() {
       this.loading = true;
-      const poolAddress = this.bPool.getBptAddress();
+      const poolAddress = this.bPool.getYptAddress();
       if (this.isMultiAsset) {
         const params = {
           poolAddress,

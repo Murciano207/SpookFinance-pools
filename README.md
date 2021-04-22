@@ -1,6 +1,6 @@
-# Balancer Pool Management
+# Yogi Pool Management
 
-Pool management interface for users to add and remove liquidity to Balancer pools.
+Pool management interface for users to add and remove liquidity to Yogi pools.
 
 ## Project setup
 ```

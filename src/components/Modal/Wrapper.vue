@@ -49,9 +49,9 @@
           {{ symbols.tokenOut }}
         </UiButton>
         <div
-          v-text="$t('ethBuffer')"
+          v-text="$t('bnbBuffer')"
           class="text-yellow text-center mt-3"
-          v-if="!etherLeft"
+          v-if="!bnbLeft"
         />
       </div>
       <template slot="footer">
@@ -102,18 +102,19 @@ export default {
   },
   computed: {
     title() {
-      return this.currentSide === 2 ? 'wrapWethToEth' : 'wrapEthToWeth';
+      return this.currentSide === 2 ? 'unwrapWbnbToBnb' : 'wrapBnbToWbnb';
     },
     symbols() {
       return {
-        tokenIn: this.currentSide === 2 ? 'WETH' : 'ETH',
-        tokenOut: this.currentSide === 2 ? 'ETH' : 'WETH'
+        tokenIn: this.currentSide === 2 ? 'WBNB' : 'BNB',
+        tokenOut: this.currentSide === 2 ? 'BNB' : 'WBNB'
       };
     },
     balance() {
-      let balance = this.web3.balances['ether'] || '0';
-      if (this.currentSide === 2)
-        balance = this.web3.balances[this.config.addresses.weth] || '0';
+      let balance = this.web3.balances['bnb'] || '0';
+      if (this.currentSide === 2) {
+        balance = this.web3.balances[this.config.addresses.wbnb] || '0';
+      }
       return normalizeBalance(balance, 18);
     },
     isValid() {
@@ -123,7 +124,7 @@ export default {
         ? !this.balance.minus(GAS_BUFFER_ERROR).lt(this.amount)
         : !this.balance.lt(this.amount);
     },
-    etherLeft() {
+    bnbLeft() {
       return (
         this.currentSide === 2 ||
         this.balance.isZero() ||
