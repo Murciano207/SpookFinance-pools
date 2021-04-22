@@ -21,13 +21,13 @@
   "explorer": "https://bscscan.com  ",
   "exchangeUrl": "http://exchange.yogi.fi",
   "addresses": {
-    "bFactory": "0x63BA45F4Af4Ca1B49BEA0c8d434CFcB0F5f6F828",
-    "bActions": "0xadEED4642549e69a695C866EfAd81841a61fF226",
-    "dsProxyRegistry": "0x4bB55f75dF311212988eE357Aa2F576A5236c116",
-    "proxy": "0xa7E44F96bF4838d10C9ed77888A9046C12082540",
-    "crpFactory": "0x6d10B040339032B9761F97D29C428Ad6b6d86eaF",
+    "bFactory": "0x2Fab27B3B379b550AED296B7Fb48D7EfEAabda57",
+    "bActions": "0xcd30F8eeBEa878c7967D86dE5C5Dac7EE18cdd14",
+    "dsProxyRegistry": "0x356EEEE5502B82fcA6054139251E61E873C603d4",
+    "proxy": "0x11bC5d49429eD36ac62F93b523235cd76e022900",
+    "crpFactory": "0xad346F5c54De58A1B3404A10C98160d2a8951000",
     "wbnb": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
-    "multicall": "0x55eEA7E9cd7139a93B486446f16d660368F99b0E"
+    "multicall": "0x7B23A56572cBC04035da7852a5427066EC2C2040"
   },
   "connectors": {
     "injected": {
