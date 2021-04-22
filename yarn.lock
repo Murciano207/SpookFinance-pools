@@ -10914,7 +10914,7 @@ yargs@^16.0.0:
 
 yogi-assets@yogi-fi/yogi-assets:
   version "1.0.0"
-  resolved "git+ssh://git@github.com/yogi-fi/yogi-assets.git#3f4c91606db8d48a4cd35b4c0b11451494dc7553"
+  resolved "https://codeload.github.com/yogi-fi/yogi-assets/tar.gz/3f4c91606db8d48a4cd35b4c0b11451494dc7553"
 
 yorkie@^2.0.0:
   version "2.0.0"
