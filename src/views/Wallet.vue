@@ -106,13 +106,8 @@ export default {
           };
         })
         .filter(({ value }) => value > 0.001);
+      
       const bnbPrice = this.price.values[this.config.addresses.wbnb];
-
-      // FIXME: debugging wbnb price
-      console.log('this.price.values', this.price.values);
-      console.log('this.config.addresses.wbnb', this.config.addresses.wbnb);
-      console.log('bnbPrice', this.config);
-
       const bnbBalance = formatUnits(this.web3.balances['bnb'] || 0, 18);
       return [
         {
