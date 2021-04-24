@@ -106,7 +106,7 @@ export default {
           };
         })
         .filter(({ value }) => value > 0.001);
-      
+
       const bnbPrice = this.price.values[this.config.addresses.wbnb];
       const bnbBalance = formatUnits(this.web3.balances['bnb'] || 0, 18);
       return [

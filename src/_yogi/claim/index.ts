@@ -25,7 +25,7 @@ const gateway = process.env.VUE_APP_IPFS_NODE || 'cloudflare-ipfs.com';
 
 export const constants = {
   56: {
-    merkleRedeem: '0xee3825780068607893328E11130F9D7071494B19',
+    merkleRedeem: '0x88b8Ace687e033fC368aE52f7fA90223A87F537e',
     snapshot:
       'https://storageapi.fleek.co/balancer-team-bucket/balancer-claim/snapshot'
   }
