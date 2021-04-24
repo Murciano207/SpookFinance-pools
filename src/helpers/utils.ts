@@ -17,10 +17,6 @@ export const MAX =
   '115792089237316195423570985008687907853269984665640564039457.584007913129639935';
 
 // FIXME: replace this
-export const EDIT_POOL_GOOGLE_FORM =
-  'https://docs.google.com/forms/d/e/1FAIpQLSe_sIVqZCL0rO--8u3PUUNGuxZ68LviAZBtrqV4gVTeTxzHCA/viewform';
-
-// FIXME: replace this
 export const amplAddress = '0xD46bA6D942050d489DBd938a2C909A5d5039A161';
 export const validAmplPools = ['0xa751a143f8fe0a108800bfb915585e4255c2fe80'];
 

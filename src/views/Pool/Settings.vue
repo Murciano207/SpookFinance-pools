@@ -1,7 +1,7 @@
 <template>
   <div class="border rounded-1 panel-background p-4">
     <div class="p-4 warning-box mb-4">
-      <a :href="googleForm" target="_blank" class="text-white">
+      <a :href="discord" target="_blank" class="text-white">
         Add or edit your smart pool description and logo.
         <Icon name="external-link" size="16" class="ml-1" />
       </a>
@@ -168,7 +168,7 @@
 
 <script>
 import { mapActions } from 'vuex';
-import { EDIT_POOL_GOOGLE_FORM, isTxReverted, MAX } from '@/helpers/utils';
+import { isTxReverted, MAX } from '@/helpers/utils';
 
 export default {
   props: ['pool', 'bPool'],
@@ -185,7 +185,7 @@ export default {
         manageWhitelist: false
       },
       transactionReverted: false,
-      googleForm: EDIT_POOL_GOOGLE_FORM,
+      discord: "https://discord.gg/AmtTyY5gzq", // Discord #support channel link
       MAX
     };
   },
