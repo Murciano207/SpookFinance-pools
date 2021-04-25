@@ -137,8 +137,8 @@ export default {
       }
       this.loading = true;
       const promises = [
-        this.loadTokenMetadata([address])
-        // FIXME: make this work this.loadPricesBySymbol([symbol])
+        this.loadTokenMetadata([address]),
+        this.loadPricesBySymbol([symbol])
       ];
       if (this.web3.account) {
         promises.push(this.getBalances([address]));
