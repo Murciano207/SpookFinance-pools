@@ -25,7 +25,8 @@
       </div>
     </div>
     <PoolBoxes :pool="pool" :bPool="bPool" />
-    <Chart :pool="pool" />
+    <!-- FIXME: restore chart if coingecko add support for BSC or once we implement it in our backend -->
+    <!-- <Chart :pool="pool" /> -->
     <Tabs :pool="pool" />
     <router-view
       :key="$route.path"
