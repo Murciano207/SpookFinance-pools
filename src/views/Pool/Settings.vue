@@ -185,7 +185,7 @@ export default {
         manageWhitelist: false
       },
       transactionReverted: false,
-      discord: "https://discord.gg/AmtTyY5gzq", // Discord #support channel link
+      discord: 'https://discord.gg/AmtTyY5gzq', // Discord #support channel link
       MAX
     };
   },

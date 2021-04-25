@@ -34,6 +34,10 @@
       "name": "MetaMask",
       "logo": "https://raw.githubusercontent.com/yogi-fi/yogi-assets/master/connectors/metamask.png" 
     },
+    "trustwallet": {
+      "name": "Trust Wallet",
+      "logo": "https://raw.githubusercontent.com/yogi-fi/yogi-assets/master/connectors/trustwallet.png" 
+    },
     "walletconnect": {
       "name": "WalletConnect",
       "logo": "https://raw.githubusercontent.com/yogi-fi/yogi-assets/master/connectors/walletconnect.png",
