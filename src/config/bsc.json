@@ -17,7 +17,7 @@
     "https://bsc-dataseed3.binance.org/",
     "https://bsc-dataseed4.binance.org/"  
   ],
-  "subgraphUrl": "https://thegraph.com/explorer/subgraph/yogi-fi/yogi-subgraph",
+  "subgraphUrl": "https://api.thegraph.com/subgraphs/name/yogi-fi/yogi-subgraph",
   "explorer": "https://bscscan.com  ",
   "exchangeUrl": "http://exchange.yogi.fi",
   "addresses": {

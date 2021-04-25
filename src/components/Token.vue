@@ -36,7 +36,7 @@ export default {
     },
     tokenLogoUrl() {
       if (this.custom) {
-        return `https://raw.githubusercontent.com/yogi/yogi-assets/master/assets/${this.address.toLowerCase()}.png`;
+        return `https://raw.githubusercontent.com/yogi/yogi-assets/master/assets/${this.address}.png`;
       }
       return getTokenLogoUrl(this.address);
     }
