@@ -24,14 +24,10 @@ const mutations = {
 const actions = {
   init: async ({ commit, dispatch }) => {
     commit('SET', { loading: true });
-    const tokenIds = Object.keys(config.tokens)
-      .map(tokenAddress => config.tokens[tokenAddress].id)
-      .filter(tokenId => !!tokenId);
     const tokenSymbols = Object.keys(config.tokens)
       .map(tokenAddress => config.tokens[tokenAddress].symbol)
       .filter(tokenSym => !!tokenSym);
     await Promise.all([
-      dispatch('loadPricesById', tokenIds),
       dispatch('loadPricesBySymbol', tokenSymbols),
       dispatch('initTokenMetadata'),
       dispatch('getBlockNumber')
