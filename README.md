@@ -20,6 +20,16 @@ npm run build
 ### Lints and fixes files
 ```
 npm run lint
+
+### Optional config
+
+Create `.env` file to change environment variables. Default values are:
+
+```
+APP_CHAIN_ID=56
+APP_GAS_PRICE=5000000000
+```
+
 ```
 
 ## License
