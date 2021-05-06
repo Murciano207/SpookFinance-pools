@@ -29,8 +29,8 @@
             />
           </div>
           <div class="column text-right">
-            {{ _num(initialPercentages[i].toFixed(4), 'percent') }}
-            → {{ _num((weights[i] / totalWeight).toFixed(4), 'percent') }}
+            {{ initialPercentages.length ? _num(initialPercentages[i].toFixed(4), 'percent') : 0 }}
+            → {{ initialPercentages.length ? _num((weights[i] / totalWeight).toFixed(4), 'percent') : 0 }}
           </div>
         </UiTableTr>
       </UiTable>
@@ -103,8 +103,7 @@ export default {
         token => this.divisor * parseFloat(token.denormWeight)
       );
       this.initialPercentages = this.pool.tokens.map(
-        token =>
-          parseFloat(token.denormWeight) / parseFloat(this.pool.totalWeight)
+        token => parseFloat(token.denormWeight) / parseFloat(this.pool.totalWeight)
       );
     }
   },

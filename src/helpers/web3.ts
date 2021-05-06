@@ -5,6 +5,8 @@ import { GAS_LIMIT_BUFFER, isTxRejected, logRevertedTx } from '@/helpers/utils';
 import provider from '@/helpers/provider';
 import { Interface } from '@ethersproject/abi';
 
+const GAS_PRICE = process.env.APP_GAS_PRICE || '5000000000';
+
 export async function sendTransaction(
   web3,
   [contractType, contractAddress, action, params, overrides]: any
@@ -18,6 +20,7 @@ export async function sendTransaction(
   const contractWithSigner = contract.connect(signer);
   try {
     // Gas estimation
+    overrides.gasPrice = GAS_PRICE;
     const gasLimitNumber = await contractWithSigner.estimateGas[action](
       ...params,
       overrides
