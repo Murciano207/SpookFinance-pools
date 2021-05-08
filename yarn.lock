@@ -10913,8 +10913,8 @@ yargs@^16.0.0:
     yargs-parser "^20.2.2"
 
 yogi-assets@yogi-fi/yogi-assets:
-  version "1.0.1"
-  resolved "https://codeload.github.com/yogi-fi/yogi-assets/tar.gz/4b079719cc0e05a879a846d884e4025ac8c9e468"
+  version "1.0.4"
+  resolved "https://codeload.github.com/yogi-fi/yogi-assets/tar.gz/a25fe13590577f78961b56360db5478f938c11ed"
 
 yorkie@^2.0.0:
   version "2.0.0"
