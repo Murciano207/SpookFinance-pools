@@ -24,14 +24,6 @@
         </router-link>
       </div>
       <div :key="web3.account">
-        <a
-          v-if="$auth.isAuthenticated && totalPendingClaims > 0"
-          href="https://claim.yogi.fi"
-          target="_blank"
-          class="mr-2"
-        >
-          <UiButton>✨ {{ _num(totalPendingClaims) }} YOGI</UiButton>
-        </a>
         <UiButton
           v-if="$auth.isAuthenticated && !wrongNetwork"
           @click="modalOpen.account = true"
@@ -95,35 +87,16 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import { getTotalPendingClaims } from '@/_yogi/claim';
-import provider from '@/helpers/provider';
 
 export default {
   data() {
     return {
       loading: false,
-      totalPendingClaims: false,
       modalOpen: {
         account: false,
         activity: false
       }
     };
-  },
-  watch: {
-    'web3.account': async function() {
-      this.totalPendingClaims = false;
-      if (!this.web3.account) return;
-
-      try {
-        this.totalPendingClaims = await getTotalPendingClaims(
-          this.config.chainId,
-          provider,
-          this.web3.account
-        );
-      } catch (e) {
-        console.log(e);
-      }
-    }
   },
   computed: {
     ...mapGetters(['myPendingTransactions']),
