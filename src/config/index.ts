@@ -1,10 +1,13 @@
 import merge from 'lodash/merge';
-import registry from 'yogi-assets/generated/pm/registry.bsc.json';
+import registry_bsc from 'yogi-assets/generated/pm/registry.bsc.json';
+import registry_polygon from 'yogi-assets/generated/pm/registry.polygon.json';
 import bsc from '@/config/bsc.json';
+import polygon from '@/config/bsc.json';
 
-const configs = { bsc };
-configs.bsc = merge(registry, configs.bsc);
-const network = process.env.VUE_APP_NETWORK || 'bsc';
+const configs = { bsc, polygon };
+configs.bsc = merge(registry_bsc, configs.bsc);
+configs.polygon = merge(registry_polygon, configs.polygon);
+const network = process.env.VUE_APP_NETWORK || 'polygon';
 const config = configs[network];
 config.env = process.env.VUE_APP_ENV || 'production';
 

@@ -1,10 +1,10 @@
 {
-  "network": "bsc",
-  "chainId": 56,
+  "network": "polygon",
+  "chainId": 137,
   "defaultPrecision": 6,
-  "rpc": ["https://bsc-dataseed.binance.org/"],
-  "subgraphUrl": "https://api.thegraph.com/subgraphs/name/yogi-fi/bsc",
-  "explorer": "https://bscscan.com",
+  "rpc": ["https://rpc-mainnet.maticvigil.com/"],
+  "subgraphUrl": "https://api.thegraph.com/subgraphs/name/yogi-fi/polygon",
+  "explorer": "https://explorer.matic.network/",
   "exchangeUrl": "http://exchange.yogi.fi",
   "addresses": {
     "bFactory": "0x2Fab27B3B379b550AED296B7Fb48D7EfEAabda57",
@@ -12,7 +12,7 @@
     "dsProxyRegistry": "0x356EEEE5502B82fcA6054139251E61E873C603d4",
     "proxy": "0x11bC5d49429eD36ac62F93b523235cd76e022900",
     "crpFactory": "0xad346F5c54De58A1B3404A10C98160d2a8951000",
-    "wnative": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+    "wnative": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
     "multicall": "0x7B23A56572cBC04035da7852a5427066EC2C2040"
   },
   "connectors": {
@@ -29,13 +29,9 @@
       "logo": "https://raw.githubusercontent.com/yogi-fi/yogi-assets/master/connectors/walletconnect.png",
       "options": {
         "rpc": {
-          "56": "https://bsc-dataseed.binance.org/"
+          "137": "https://rpc-mainnet.maticvigil.com/"
         }
       }
-    },
-    "binancewallet": {
-      "name": "Binance Chain Wallet",
-      "logo": "https://raw.githubusercontent.com/yogi-fi/yogi-assets/master/connectors/binancewallet.svg"
     }
   }
 }
