@@ -201,23 +201,23 @@ const mutations = {
   APPROVE_FAILURE(_state, payload) {
     console.debug('APPROVE_FAILURE', payload);
   },
-  WRAP_BNB_REQUEST() {
-    console.debug('WRAP_BNB_REQUEST');
+  WRAP_NATIVE_REQUEST() {
+    console.debug('WRAP_NATIVE_REQUEST');
   },
-  WRAP_BNB_SUCCESS() {
-    console.debug('WRAP_BNB_SUCCESS');
+  WRAP_NATIVE_SUCCESS() {
+    console.debug('WRAP_NATIVE_SUCCESS');
   },
-  WRAP_BNB_FAILURE(_state, payload) {
-    console.debug('WRAP_BNB_FAILURE', payload);
+  WRAP_NATIVE_FAILURE(_state, payload) {
+    console.debug('WRAP_NATIVE_FAILURE', payload);
   },
-  UNWRAP_BNB_REQUEST() {
-    console.debug('UNWRAP_BNB_REQUEST');
+  UNWRAP_NATIVE_REQUEST() {
+    console.debug('UNWRAP_NATIVE_REQUEST');
   },
-  UNWRAP_BNB_SUCCESS() {
-    console.debug('UNWRAP_BNB_SUCCESS');
+  UNWRAP_NATIVE_SUCCESS() {
+    console.debug('UNWRAP_NATIVE_SUCCESS');
   },
-  UNWRAP_BNB_FAILURE(_state, payload) {
-    console.debug('UNWRAP_BNB_FAILURE', payload);
+  UNWRAP_NATIVE_FAILURE(_state, payload) {
+    console.debug('UNWRAP_NATIVE_FAILURE', payload);
   }
 };
 
@@ -834,7 +834,7 @@ const actions = {
     }
   },
   wrap: async ({ commit, dispatch }, amount) => {
-    commit('WRAP_BNB_REQUEST');
+    commit('WRAP_NATIVE_REQUEST');
     try {
       const params = [
         'WBNB',
@@ -852,15 +852,15 @@ const actions = {
         'green',
         `You've successfully wrapped ${amount} bnb`
       ]);
-      commit('WRAP_BNB_SUCCESS');
+      commit('WRAP_NATIVE_SUCCESS');
     } catch (e) {
       if (!e || isTxReverted(e)) return e;
       dispatch('notify', ['red', i18n.tc('failureOops')]);
-      commit('WRAP_BNB_FAILURE', e);
+      commit('WRAP_NATIVE_FAILURE', e);
     }
   },
   unwrap: async ({ commit, dispatch }, amount) => {
-    commit('UNWRAP_BNB_REQUEST');
+    commit('UNWRAP_NATIVE_REQUEST');
     try {
       const params = [
         'WBNB',
@@ -878,11 +878,11 @@ const actions = {
         'green',
         `You've successfuetherlly unwrapped ${amount} bnb`
       ]);
-      commit('UNWRAP_BNB_SUCCESS');
+      commit('UNWRAP_NATIVE_SUCCESS');
     } catch (e) {
       if (!e || isTxReverted(e)) return e;
       dispatch('notify', ['red', i18n.tc('failureOops')]);
-      commit('UNWRAP_BNB_FAILURE', e);
+      commit('UNWRAP_NATIVE_FAILURE', e);
     }
   }
 };
