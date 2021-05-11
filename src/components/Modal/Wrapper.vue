@@ -49,7 +49,7 @@
           {{ symbols.tokenOut }}
         </UiButton>
         <div
-          v-text="$t('bnbBuffer')"
+          v-text="$t('nativeBuffer')"
           class="text-yellow text-center mt-3"
           v-if="!bnbLeft"
         />

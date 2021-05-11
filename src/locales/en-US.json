@@ -90,7 +90,7 @@
     "errMaxPoolTokens": "Pool should contain no more than 8 tokens",
     "errMinPoolTokens": "Pool should contain at least 2 tokens",
     "errMinTokenBalance": "Token balance in wei form needs to be at least 1,000,000. For example, WBTC has 8 decimals, so the minimum is 0.01 WBTC.",
-    "bnbBuffer": "Keep some bnb to pay for gas.",
+    "nativeBuffer": "Keep some balance to pay for gas.",
     "exchange": "Exchange",
     "explorePools": "Explore pools",
     "failureOops": "Oops, something went wrong",

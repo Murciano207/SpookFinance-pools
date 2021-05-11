@@ -40,14 +40,14 @@ export async function subgraphRequest(url, query) {
 }
 
 export function getTokenLogoUrl(address: string): string | null {
-  if (address === 'bnb') {
-    address = config.addresses.wbnb;
+  if (address === 'native') {
+    address = config.addresses.wnative;
   }
   address = getAddress(address);
   const metadata = config.tokens[address];
 
   if (!metadata) {
-    return `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/assets/${address}/logo.png`;
+    console.log('Missing metadata:', address);
   }
   return metadata.logoUrl;
 }
