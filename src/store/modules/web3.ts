@@ -287,7 +287,7 @@ const actions = {
     const testToken = new Interface(abi.TestToken);
     const tokensToFetch = tokens
       ? tokens
-      : Object.keys(state.balances).filter(token => token !== 'bnb');
+      : Object.keys(state.balances).filter(token => token !== 'native');
     tokensToFetch.forEach(token => {
       calls.push([
         // @ts-ignore
@@ -330,19 +330,19 @@ const actions = {
     const testToken = new Interface(abi.TestToken);
     const tokensToFetch = tokens
       ? tokens
-      : Object.keys(state.balances).filter(token => token !== 'bnb');
+      : Object.keys(state.balances).filter(token => token !== 'native');
     tokensToFetch.forEach(token => {
       // @ts-ignore
       calls.push([token, testToken.encodeFunctionData('balanceOf', [address])]);
     });
     promises.push(multi.aggregate(calls));
-    promises.push(multi.getBnbBalance(address));
+    promises.push(multi.getBalance(address));
     const balances: any = {};
     try {
       // @ts-ignore
-      const [[, response], bnbBalance] = await Promise.all(promises);
+      const [[, response], nativeBalance] = await Promise.all(promises);
       // @ts-ignore
-      balances.bnb = bnbBalance.toString();
+      balances.native = nativeBalance.toString();
       let i = 0;
       response.forEach(value => {
         if (tokensToFetch && tokensToFetch[i]) {
