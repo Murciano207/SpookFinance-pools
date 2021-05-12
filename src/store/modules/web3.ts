@@ -163,7 +163,7 @@ const actions = {
     commit('LOGOUT');
   },
   initTokenMetadata: async ({ commit }) => {
-    const invalids = ['0xbBbBBBBbbBBBbbbBbbBbbbbBBbBbbbbBbBbbBBbB'];
+    const invalids = ['0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE'];
     const metadata = Object.fromEntries(
       Object.entries(config.tokens).map(tokenEntry => {
         const { decimals, symbol, name } = tokenEntry[1] as any;
@@ -214,7 +214,7 @@ const actions = {
         await dispatch('loadAccount');
         await dispatch('checkPendingTransactions');
       } else {
-        await dispatch('changeSubdomain');
+        await dispatch('changeSubdomain', state.injectedChainId);
       }
       commit('LOAD_WEB3_SUCCESS');
     } catch (e) {
@@ -254,7 +254,7 @@ const actions = {
         auth.web3.listAccounts()
       ]);
       const account = accounts.length > 0 ? accounts[0] : null;
-      let name = '';
+      const name = '';
       
       // FIXME: restore once ENS is ported
       // if (config.chainId === 1) name = await provider.lookupAddress(account);
@@ -265,6 +265,7 @@ const actions = {
         name
       });
     } catch (e) {
+      await dispatch('changeSubdomain', e.detectedNetwork.chainId);
       commit('LOAD_PROVIDER_FAILURE', e);
       return Promise.reject();
     }
@@ -280,13 +281,13 @@ const actions = {
       dispatch('getUserPoolShares')
     ]);
   },
-  changeSubdomain: async () => {
-    if (state.injectedChainId === 56) {
+  changeSubdomain: async ({ }, chainId: number) => {
+    if (chainId === 56) {
       location.replace('https://bsc.pools.yogi.fi');
-    } else if (state.injectedChainId === 137) {
+    } else if (chainId === 137) {
       location.replace('https://polygon.pools.yogi.fi');
     } else {
-      console.warn('unsupported chain', state.injectedChainId);
+      console.warn('unsupported chain', chainId);
     }
   },
   getPoolBalances: async (_state, { poolAddress, tokens }) => {
