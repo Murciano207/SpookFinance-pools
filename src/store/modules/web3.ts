@@ -213,6 +213,8 @@ const actions = {
       if (state.injectedChainId === config.chainId) {
         await dispatch('loadAccount');
         await dispatch('checkPendingTransactions');
+      } else {
+        await dispatch('changeSubdomain');
       }
       commit('LOAD_WEB3_SUCCESS');
     } catch (e) {
@@ -275,6 +277,15 @@ const actions = {
       dispatch('getAllowances', tokens),
       dispatch('getUserPoolShares')
     ]);
+  },
+  changeSubdomain: async () => {
+    if (state.injectedChainId === 56) {
+      location.replace('https://bsc.pools.yogi.fi');
+    } else if (state.injectedChainId === 137) {
+      location.replace('https://polygon.pools.yogi.fi');
+    } else {
+      console.warn('unsupported chain', state.injectedChainId);
+    }
   },
   getPoolBalances: async (_state, { poolAddress, tokens }) => {
     const promises: any = [];
