@@ -40,7 +40,7 @@ export async function subgraphRequest(url, query) {
 }
 
 export function getTokenLogoUrl(address: string): string | null {
-  if (address === 'native') {
+  if (address === config.native) {
     address = config.addresses.wnative;
   }
   address = getAddress(address);

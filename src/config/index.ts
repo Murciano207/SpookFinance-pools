@@ -10,5 +10,6 @@ configs.polygon = merge(registry_polygon, configs.polygon);
 const network = process.env.VUE_APP_NETWORK || 'polygon';
 const config = configs[network];
 config.env = process.env.VUE_APP_ENV || 'production';
+config.native = process.env.VUE_APP_NATIVE || 'native';
 
 export default config;

@@ -80,12 +80,12 @@
 import { validateNumberInput, ValidationError } from '@/helpers/validation';
 import { normalizeBalance } from '@/helpers/utils';
 import { mapActions } from 'vuex';
+import config from '../../config';
 
 const GAS_BUFFER_ERROR = 0.01;
 const GAS_BUFFER_WARNING = 0.2;
 
-const native = process.env.VUE_APP_NATIVE || 'native';
-const NATIVE = native.toUpperCase();
+const NATIVE = config.native.toUpperCase();
 
 export default {
   props: ['open', 'side'],
@@ -114,7 +114,7 @@ export default {
       };
     },
     balance() {
-      let balance = this.web3.balances['native'] || '0';
+      let balance = this.web3.balances[config.native] || '0';
       if (this.currentSide === 2) {
         balance = this.web3.balances[this.config.addresses.wnative] || '0';
       }
