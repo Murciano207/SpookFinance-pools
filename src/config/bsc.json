@@ -13,7 +13,7 @@
     "proxy": "0x11bC5d49429eD36ac62F93b523235cd76e022900",
     "crpFactory": "0xad346F5c54De58A1B3404A10C98160d2a8951000",
     "wnative": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
-    "multicall": "0x7B23A56572cBC04035da7852a5427066EC2C2040"
+    "multicall": "0x88a85d5B9358DAb64D1Ca6d49A0BBF8fC621A8F8"
   },
   "connectors": {
     "injected": {

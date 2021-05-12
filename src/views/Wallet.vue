@@ -25,7 +25,7 @@
           <div v-text="balance.symbol" class="text-gray" />
         </div>
         <div class="flex-auto text-left">
-          <div v-if="balance.address !== 'native'" class="flex-auto">
+          <div v-if="balance.address !== native" class="flex-auto">
             <UiButton
               v-if="balance.address === config.addresses.wnative"
               @click="[(modalWrapperOpen = true), (side = 2)]"
@@ -84,7 +84,8 @@ export default {
   data() {
     return {
       modalWrapperOpen: false,
-      side: 0
+      side: 0,
+      native: native
     };
   },
   computed: {
@@ -92,7 +93,7 @@ export default {
       const balances = Object.entries(this.web3.balances)
         .filter(
           ([address]) =>
-            address !== 'native' && this.web3.tokenMetadata[address]
+            address !== native && this.web3.tokenMetadata[address]
         )
         .map(([address, denormBalance]) => {
           const price = this.price.values[address];
@@ -112,7 +113,7 @@ export default {
         .filter(({ value }) => value > 0.001);
 
       const nativePrice = this.price.values[this.config.addresses.wnative];
-      const nativeBalance = formatUnits(this.web3.balances['native'] || 0, 18);
+      const nativeBalance = formatUnits(this.web3.balances[native] || 0, 18);
       return [
         {
           address: native,
