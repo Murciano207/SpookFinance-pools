@@ -24,7 +24,7 @@ const actions = {
 
     let data;
     try {
-      const url = `https://mirror.yogi.fi/pancakeswap`;
+      const url = `https://mirror.yogi.fi/prices`;
       const response = await fetch(url);
       data = await response.json();
     } catch (e) {
@@ -41,8 +41,8 @@ const actions = {
     }
 
     const prices = {};
-    for (const id in data.prices) {
-      const price = data.prices[id];
+    for (const id in data) {
+      const price = data[id];
       const address = symToAddressMap[id];
       if (!address) {
         continue;
