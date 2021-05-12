@@ -28,6 +28,10 @@ Create `.env` file to change environment variables. Default values are:
 ```
 APP_CHAIN_ID=56
 APP_GAS_PRICE=5000000000
+
+VUE_APP_ENV=production
+VUE_APP_NETWORK=polygon
+VUE_APP_NATIVE=matic
 ```
 
 ```
