@@ -105,7 +105,7 @@ export default {
   },
   computed: {
     title() {
-      return this.currentSide === 2 ? 'unwrapWnativeToNative' : 'wrapNativeToWnative';
+      return this.currentSide === 2 ? 'unwrapNative' : 'wrapNative';
     },
     symbols() {
       return {

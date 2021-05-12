@@ -212,9 +212,6 @@ export default {
     };
   },
   computed: {
-    factors() {
-      return getFactors(this.bPool, this.config.chainId);
-    },
     rights() {
       return filterObj(this.bPool.metadata.rights, right => right[1]);
     },

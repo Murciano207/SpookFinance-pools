@@ -6,7 +6,12 @@ import binancewallet from '@/helpers/bsc-connector';
 import config from '@/config';
 
 const options: any = { connectors: [] };
-const connectors = { injected, trustwallet: injected, walletconnect, binancewallet };
+const connectors = {
+  injected,
+  trustwallet: injected,
+  walletconnect,
+  binancewallet
+};
 
 Object.entries(config.connectors).forEach((connector: any) => {
   options.connectors.push({

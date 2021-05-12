@@ -210,11 +210,14 @@ const DEFAULT_WEIGHT_CHANGE_DURATION = '10';
 const DEFAULT_ADD_TOKEN_TIMELOCK = '10';
 const DEFAULT_INITIAL_SUPPLY = '100';
 
+const native = process.env.VUE_APP_NATIVE || 'native';
+const NATIVE = native.toUpperCase();
+
 function getAnotherToken(tokens, selectedTokens) {
   const tokenAddresses = Object.keys(tokens);
   for (const tokenAddress of tokenAddresses) {
     const token = tokens[tokenAddress];
-    if (token.symbol === 'BNB') {
+    if (token.symbol === NATIVE) {
       continue;
     }
     if (!selectedTokens.includes(token.address)) {
@@ -251,12 +254,12 @@ export default {
   },
   created() {
     // Initialize an (arbitrary) two-token pool, with weights
-    const wbnb = getTokenBySymbol('WBNB').address;
-    const busd = getTokenBySymbol('BUSD').address;
-    this.tokens = [wbnb, busd];
+    const wnative = getTokenBySymbol(`W${NATIVE}`).address;
+    const dai = getTokenBySymbol('DAI').address;
+    this.tokens = [wnative, dai];
     // weights contain percentage values - denorms are calculated later
-    Vue.set(this.weights, wbnb, '60');
-    Vue.set(this.weights, busd, '40');
+    Vue.set(this.weights, wnative, '60');
+    Vue.set(this.weights, dai, '40');
     this.loading = false;
   },
   computed: {

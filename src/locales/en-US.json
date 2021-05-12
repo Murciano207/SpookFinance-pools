@@ -253,8 +253,8 @@
     "withdraw": "Withdraw",
     "withdrawalAmt": "Withdrawal amt.",
     "wrap": "Wrap",
-    "wrapBnbToWbnb": "Wrap BNB to WBNB",
+    "wrapNative": "Wrap native coin",
     "wrapFactor": "Wrap factor",
-    "unwrapWbnbToBnb": "Unwrap WBNB to BNB",
+    "unwrapNative": "Unwrap native coin",
     "wrongNetwork": "Wrong network"
 }

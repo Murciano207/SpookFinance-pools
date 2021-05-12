@@ -25,14 +25,14 @@
           <div v-text="balance.symbol" class="text-gray" />
         </div>
         <div class="flex-auto text-left">
-          <div v-if="balance.address !== 'bnb'" class="flex-auto">
+          <div v-if="balance.address !== 'native'" class="flex-auto">
             <UiButton
-              v-if="balance.address === config.addresses.wbnb"
+              v-if="balance.address === config.addresses.wnative"
               @click="[(modalWrapperOpen = true), (side = 2)]"
               type="button"
               class="button-primary button-sm ml-2"
             >
-              Unwrap to BNB
+              Unwrap native coin
             </UiButton>
           </div>
           <div v-else class="flex-auto">
@@ -41,7 +41,7 @@
               type="button"
               class="button-primary button-sm ml-2"
             >
-              Wrap to WBNB
+              Wrap native coin
             </UiButton>
           </div>
         </div>
@@ -77,6 +77,9 @@
 <script>
 import { formatUnits } from '@ethersproject/units';
 
+const native = process.env.VUE_APP_NATIVE || 'native';
+const NATIVE = native.toUpperCase();
+
 export default {
   data() {
     return {
@@ -88,7 +91,8 @@ export default {
     balances() {
       const balances = Object.entries(this.web3.balances)
         .filter(
-          ([address]) => address !== 'bnb' && this.web3.tokenMetadata[address]
+          ([address]) =>
+            address !== 'native' && this.web3.tokenMetadata[address]
         )
         .map(([address, denormBalance]) => {
           const price = this.price.values[address];
@@ -107,16 +111,16 @@ export default {
         })
         .filter(({ value }) => value > 0.001);
 
-      const bnbPrice = this.price.values[this.config.addresses.wbnb];
-      const bnbBalance = formatUnits(this.web3.balances['bnb'] || 0, 18);
+      const nativePrice = this.price.values[this.config.addresses.wnative];
+      const nativeBalance = formatUnits(this.web3.balances['native'] || 0, 18);
       return [
         {
-          address: 'bnb',
-          name: 'BNB',
-          symbol: 'BNB',
-          price: bnbPrice,
-          balance: bnbBalance,
-          value: bnbPrice * bnbBalance
+          address: native,
+          name: NATIVE,
+          symbol: NATIVE,
+          price: nativePrice,
+          balance: nativeBalance,
+          value: nativePrice * nativeBalance
         },
         ...balances
       ];

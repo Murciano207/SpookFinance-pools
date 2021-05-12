@@ -11,6 +11,9 @@ import {
 import BigNumber from '@/helpers/bignumber';
 import { makeProxyTransaction } from '@/helpers/web3';
 
+const native = process.env.VUE_APP_NATIVE || 'native';
+const NATIVE = native.toUpperCase();
+
 const mutations = {
   CREATE_PROXY_REQUEST() {
     console.debug('CREATE_PROXY_REQUEST');
@@ -837,21 +840,18 @@ const actions = {
     commit('WRAP_NATIVE_REQUEST');
     try {
       const params = [
-        'WBNB',
-        config.addresses.wbnb,
+        `W${NATIVE}`,
+        config.addresses.wnative,
         'deposit',
         [],
         { value: toWei(amount).toString() }
       ];
       await dispatch('processTransaction', {
         params,
-        title: 'Wrap BNB to WBNB'
+        title: 'Wrap native coin'
       });
       await dispatch('getBalances');
-      dispatch('notify', [
-        'green',
-        `You've successfully wrapped ${amount} bnb`
-      ]);
+      dispatch('notify', ['green', `You've successfully wrapped ${amount}`]);
       commit('WRAP_NATIVE_SUCCESS');
     } catch (e) {
       if (!e || isTxReverted(e)) return e;
@@ -863,20 +863,20 @@ const actions = {
     commit('UNWRAP_NATIVE_REQUEST');
     try {
       const params = [
-        'WBNB',
-        config.addresses.wbnb,
+        `W${NATIVE}`,
+        config.addresses.wnative,
         'withdraw',
         [toWei(amount).toString()],
         {}
       ];
       await dispatch('processTransaction', {
         params,
-        title: 'Unwrap WBNB to BNB'
+        title: 'Unwrap native coin'
       });
       await dispatch('getBalances');
       dispatch('notify', [
         'green',
-        `You've successfuetherlly unwrapped ${amount} bnb`
+        `You've successfuetherlly unwrapped ${amount}`
       ]);
       commit('UNWRAP_NATIVE_SUCCESS');
     } catch (e) {
