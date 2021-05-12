@@ -6,8 +6,6 @@ import { shortenAddress, shorten, trunc, formatNumber } from '@/helpers/utils';
 // @ts-ignore
 const modules = Object.entries(store.state).map(module => module[0]);
 
-const native = process.env.VUE_APP_NATIVE || 'native';
-
 export default {
   data() {
     return {
@@ -34,7 +32,7 @@ export default {
       return `${config.explorer}/${type}/${str}`;
     },
     _ticker(address: string): string {
-      if (address === 'native') return native.toUpperCase();
+      if (address === config.native) return config.NATIVE;
       const token = config.tokens[address];
       return token ? token.symbol : this._shortenAddress(address);
     },

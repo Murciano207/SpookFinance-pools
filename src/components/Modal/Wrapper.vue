@@ -80,7 +80,7 @@
 import { validateNumberInput, ValidationError } from '@/helpers/validation';
 import { normalizeBalance } from '@/helpers/utils';
 import { mapActions } from 'vuex';
-import config from '../../config';
+import config from '@/config';
 
 const GAS_BUFFER_ERROR = 0.01;
 const GAS_BUFFER_WARNING = 0.2;

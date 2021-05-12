@@ -202,6 +202,7 @@ import {
   getDenorm,
   isValidDenormValue
 } from '@/helpers/weights';
+import config from '@/config';
 
 // The contract defaults are 90,000 for the weight change duration, and 500 for the add token timelock
 // Since broadcast currently calls the createPool overload that passes in the block time parameters, we
@@ -210,14 +211,11 @@ const DEFAULT_WEIGHT_CHANGE_DURATION = '10';
 const DEFAULT_ADD_TOKEN_TIMELOCK = '10';
 const DEFAULT_INITIAL_SUPPLY = '100';
 
-const native = process.env.VUE_APP_NATIVE || 'native';
-const NATIVE = native.toUpperCase();
-
 function getAnotherToken(tokens, selectedTokens) {
   const tokenAddresses = Object.keys(tokens);
   for (const tokenAddress of tokenAddresses) {
     const token = tokens[tokenAddress];
-    if (token.symbol === NATIVE) {
+    if (token.symbol === config.NATIVE) {
       continue;
     }
     if (!selectedTokens.includes(token.address)) {
@@ -254,7 +252,7 @@ export default {
   },
   created() {
     // Initialize an (arbitrary) two-token pool, with weights
-    const wnative = getTokenBySymbol(`W${NATIVE}`).address;
+    const wnative = getTokenBySymbol(`W${config.NATIVE}`).address;
     const dai = getTokenBySymbol('DAI').address;
     this.tokens = [wnative, dai];
     // weights contain percentage values - denorms are calculated later

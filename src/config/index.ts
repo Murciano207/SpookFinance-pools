@@ -11,5 +11,6 @@ const network = process.env.VUE_APP_NETWORK || 'polygon';
 const config = configs[network];
 config.env = process.env.VUE_APP_ENV || 'production';
 config.native = process.env.VUE_APP_NATIVE || 'native';
+config.NATIVE = config.native.toUpperCase();
 
 export default config;

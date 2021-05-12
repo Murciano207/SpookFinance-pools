@@ -11,9 +11,6 @@ import {
 import BigNumber from '@/helpers/bignumber';
 import { makeProxyTransaction } from '@/helpers/web3';
 
-const native = process.env.VUE_APP_NATIVE || 'native';
-const NATIVE = native.toUpperCase();
-
 const mutations = {
   CREATE_PROXY_REQUEST() {
     console.debug('CREATE_PROXY_REQUEST');
@@ -840,7 +837,7 @@ const actions = {
     commit('WRAP_NATIVE_REQUEST');
     try {
       const params = [
-        `W${NATIVE}`,
+        `W${config.NATIVE}`,
         config.addresses.wnative,
         'deposit',
         [],
@@ -863,7 +860,7 @@ const actions = {
     commit('UNWRAP_NATIVE_REQUEST');
     try {
       const params = [
-        `W${NATIVE}`,
+        `W${config.NATIVE}`,
         config.addresses.wnative,
         'withdraw',
         [toWei(amount).toString()],

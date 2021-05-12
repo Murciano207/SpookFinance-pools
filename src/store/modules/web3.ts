@@ -287,7 +287,7 @@ const actions = {
     const testToken = new Interface(abi.TestToken);
     const tokensToFetch = tokens
       ? tokens
-      : Object.keys(state.balances).filter(token => token !== 'native');
+      : Object.keys(state.balances).filter(token => token !== config.native);
     tokensToFetch.forEach(token => {
       calls.push([
         // @ts-ignore
@@ -330,7 +330,7 @@ const actions = {
     const testToken = new Interface(abi.TestToken);
     const tokensToFetch = tokens
       ? tokens
-      : Object.keys(state.balances).filter(token => token !== 'native');
+      : Object.keys(state.balances).filter(token => token !== config.native);
     tokensToFetch.forEach(token => {
       // @ts-ignore
       calls.push([token, testToken.encodeFunctionData('balanceOf', [address])]);
@@ -342,7 +342,7 @@ const actions = {
       // @ts-ignore
       const [[, response], nativeBalance] = await Promise.all(promises);
       // @ts-ignore
-      balances.native = nativeBalance.toString();
+      balances[config.native] = nativeBalance.toString();
       let i = 0;
       response.forEach(value => {
         if (tokensToFetch && tokensToFetch[i]) {
