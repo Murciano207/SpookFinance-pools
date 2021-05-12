@@ -209,14 +209,12 @@ const actions = {
   loadWeb3: async ({ commit, dispatch }) => {
     commit('LOAD_WEB3_REQUEST');
     try {
-      // This needs to be executed first to ensure good UX
-      if (state.injectedChainId !== config.chainId) {
-        await dispatch('changeSubdomain');
-      }
       if (auth.provider) await dispatch('loadProvider');
       if (state.injectedChainId === config.chainId) {
         await dispatch('loadAccount');
         await dispatch('checkPendingTransactions');
+      } else {
+        await dispatch('changeSubdomain');
       }
       commit('LOAD_WEB3_SUCCESS');
     } catch (e) {
@@ -256,8 +254,8 @@ const actions = {
         auth.web3.listAccounts()
       ]);
       const account = accounts.length > 0 ? accounts[0] : null;
-      
       let name = '';
+      
       // FIXME: restore once ENS is ported
       // if (config.chainId === 1) name = await provider.lookupAddress(account);
       commit('LOAD_PROVIDER_SUCCESS', {
