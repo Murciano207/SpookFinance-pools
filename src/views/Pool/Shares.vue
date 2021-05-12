@@ -16,7 +16,7 @@
           <div class="text-left flex-auto">
             <a
               :href="
-                `${_bscscanLink(pool.id, 'token')}?a=${share.userAddress.id}`
+                `${_explorerLink(pool.id, 'token')}?a=${share.userAddress.id}`
               "
               target="_blank"
               class="text-white"

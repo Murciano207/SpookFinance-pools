@@ -16,7 +16,7 @@
       />
     </div>
     <div>
-      <a :href="_bscscanLink(pool.getYptAddress(), 'token')" target="_blank">
+      <a :href="_explorerLink(pool.getYptAddress(), 'token')" target="_blank">
         <span
           v-if="pool.config.name || pool.metadata.name"
           v-text="_shorten(pool.config.name || pool.metadata.name, 24)"

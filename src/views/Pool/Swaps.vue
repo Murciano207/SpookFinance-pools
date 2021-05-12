@@ -18,7 +18,7 @@
         <UiTableTr v-for="(swap, i) in swaps" :key="i" :swap="swap">
           <div class="flex-auto text-left hide-sm hide-md hide-lg">
             <a
-              :href="_bscscanLink(getTxHashFromId(swap.id), 'tx')"
+              :href="_explorerLink(getTxHashFromId(swap.id), 'tx')"
               class="text-white"
               target="_blank"
             >

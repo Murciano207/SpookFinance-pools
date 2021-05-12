@@ -30,7 +30,7 @@ export default {
     _trunc(value: number, decimals: number): number {
       return trunc(value, decimals);
     },
-    _bscscanLink(str: string, type = 'address'): string {
+    _explorerLink(str: string, type = 'address'): string {
       return `${config.explorer}/${type}/${str}`;
     },
     _ticker(address: string): string {

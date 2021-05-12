@@ -105,7 +105,7 @@
       />
       <h5>
         <a
-          :href="_bscscanLink(bPool.metadata.controller, 'token')"
+          :href="_explorerLink(bPool.metadata.controller, 'token')"
           target="_blank"
           class="text-white"
         >
@@ -119,7 +119,7 @@
       <div v-text="$t('smartPoolController')" class="mb-2" />
       <h5>
         <a
-          :href="_bscscanLink(bPool.metadata.crpController)"
+          :href="_explorerLink(bPool.metadata.crpController)"
           target="_blank"
           class="text-white"
         >
@@ -133,7 +133,7 @@
       <div v-text="$t('creationDate')" class="mb-2" />
       <h5>
         <a
-          :href="_bscscanLink(bPool.metadata.tx, 'tx')"
+          :href="_explorerLink(bPool.metadata.tx, 'tx')"
           target="_blank"
           class="text-white"
         >
@@ -147,7 +147,7 @@
         <div v-text="$t('yptAsset')" class="mb-2" />
         <h5>
           <a
-            :href="_bscscanLink(bPool.address, 'token')"
+            :href="_explorerLink(bPool.address, 'token')"
             target="_blank"
             class="text-white"
           >

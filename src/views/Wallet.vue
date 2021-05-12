@@ -3,7 +3,7 @@
     <Container class="d-flex mb-3">
       <div class="flex-auto">
         <h3 v-text="$t('myWallet')" />
-        <a :href="_bscscanLink(web3.account)" target="_blank">
+        <a :href="_explorerLink(web3.account)" target="_blank">
           <span v-text="_shortenAddress(web3.account)" />
           <Icon name="external-link" size="16" class="ml-1 mr-2" />
         </a>
@@ -57,7 +57,7 @@
     <Container class="d-flex mb-3">
       <div v-if="web3.dsProxyAddress" class="flex-auto">
         <h3 v-text="$t('myProxy')" />
-        <a :href="_bscscanLink(web3.dsProxyAddress)" target="_blank">
+        <a :href="_explorerLink(web3.dsProxyAddress)" target="_blank">
           <span v-text="web3.dsProxyAddress" />
           <Icon name="external-link" size="16" class="ml-1 mr-2" />
         </a>
