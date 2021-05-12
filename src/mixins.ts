@@ -6,7 +6,7 @@ import { shortenAddress, shorten, trunc, formatNumber } from '@/helpers/utils';
 // @ts-ignore
 const modules = Object.entries(store.state).map(module => module[0]);
 
-const native = process.env.VUE_APP_NATIVE || 'bnb';
+const native = process.env.VUE_APP_NATIVE || 'native';
 
 export default {
   data() {

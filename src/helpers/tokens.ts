@@ -1,7 +1,3 @@
-export const YOGI_TOKEN = {
-  56: '0xa20FFbd8c1541E31145a9C8d34833fd4b2BC90e5'
-};
-
 export const uncappedTokens = {
   56: [
     '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c', // WBNB
@@ -10,9 +6,16 @@ export const uncappedTokens = {
     '0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d', // USDC,
     '0x55d398326f99059fF775485246999027B3197955', // USDT
     '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c' // WBTC
+  ],
+
+  137: [
+    "0xc2132D05D31c914a87C6611C10748AEb04B58e8F", // USDT
+		"0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174", // USDC
+		"0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063" // DAI
   ]
 };
 
 export const equivalentSets = {
-  56: []
+  56:  [],
+  137: []
 };

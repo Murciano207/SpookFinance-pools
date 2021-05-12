@@ -51,7 +51,7 @@
         <div
           v-text="$t('nativeBuffer')"
           class="text-yellow text-center mt-3"
-          v-if="!bnbLeft"
+          v-if="!nativeLeft"
         />
       </div>
       <template slot="footer">
@@ -84,6 +84,9 @@ import { mapActions } from 'vuex';
 const GAS_BUFFER_ERROR = 0.01;
 const GAS_BUFFER_WARNING = 0.2;
 
+const native = process.env.VUE_APP_NATIVE || 'native';
+const NATIVE = native.toUpperCase();
+
 export default {
   props: ['open', 'side'],
   data() {
@@ -102,18 +105,18 @@ export default {
   },
   computed: {
     title() {
-      return this.currentSide === 2 ? 'unwrapWbnbToBnb' : 'wrapBnbToWbnb';
+      return this.currentSide === 2 ? 'unwrapWnativeToNative' : 'wrapNativeToWnative';
     },
     symbols() {
       return {
-        tokenIn: this.currentSide === 2 ? 'WBNB' : 'BNB',
-        tokenOut: this.currentSide === 2 ? 'BNB' : 'WBNB'
+        tokenIn: this.currentSide === 2 ? `W${NATIVE}` : NATIVE,
+        tokenOut: this.currentSide === 2 ? NATIVE : `W${NATIVE}`
       };
     },
     balance() {
-      let balance = this.web3.balances['bnb'] || '0';
+      let balance = this.web3.balances['native'] || '0';
       if (this.currentSide === 2) {
-        balance = this.web3.balances[this.config.addresses.wbnb] || '0';
+        balance = this.web3.balances[this.config.addresses.wnative] || '0';
       }
       return normalizeBalance(balance, 18);
     },
@@ -124,7 +127,7 @@ export default {
         ? !this.balance.minus(GAS_BUFFER_ERROR).lt(this.amount)
         : !this.balance.lt(this.amount);
     },
-    bnbLeft() {
+    nativeLeft() {
       return (
         this.currentSide === 2 ||
         this.balance.isZero() ||
