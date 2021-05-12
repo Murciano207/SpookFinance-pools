@@ -188,33 +188,6 @@
         class="text-white"
       />
     </div>
-    <div class="mb-3">
-      <div v-text="$t('liquidityMiningFactors')" class="mb-2" />
-      <h5
-        v-text="`${$t('feeFactor')}: ${factors.feeFactor.toFixed(4)}`"
-        class="text-white"
-      />
-      <h5 class="text-white">
-        <span
-          v-if="isNaN(factors.ratioFactor)"
-          v-text="`${$t('ratioFactor')}: N/A (no tokens)`"
-        />
-        <span
-          v-else
-          v-text="`${$t('ratioFactor')}: ${factors.ratioFactor.toFixed(4)}`"
-        />
-      </h5>
-      <h5 class="text-white">
-        <span
-          v-if="isNaN(factors.wrapFactor)"
-          v-text="`${$t('wrapFactor')}: N/A (no tokens)`"
-        />
-        <span
-          v-else
-          v-text="`${$t('wrapFactor')}: ${factors.wrapFactor.toFixed(4)}`"
-        />
-      </h5>
-    </div>
   </UiTable>
 </template>
 
@@ -227,7 +200,6 @@ import {
 } from '@/helpers/utils';
 import { mapActions } from 'vuex';
 import { getLbpData } from '@/helpers/lbpData';
-import { getFactors } from '@/helpers/miningFactors';
 
 export default {
   props: ['bPool', 'pool'],

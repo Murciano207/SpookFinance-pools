@@ -112,7 +112,6 @@
     "liquidity": "Liquidity",
     "liquidityFail": "Adding liquidity might fail with max balance if a trade occurs before the transaction is mined. Use high gas price or",
     "liquidityIncurs": "liquidity will incur",
-    "liquidityMiningFactors": "Liquidity mining factors",
     "logout": "Log out",
     "lowerAmounts": "lower amounts",
     "manage": "Manage",
