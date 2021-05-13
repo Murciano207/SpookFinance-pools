@@ -278,7 +278,8 @@ export function blockNumberToTimestamp(
   const AVG_BLOCK_TIMES = {
     1: 13,
     42: 5,
-    56: 3
+    56: 3,
+    137: 1
   };
   const avgBlockTime = AVG_BLOCK_TIMES[config.chainId];
   return currentTime + avgBlockTime * 1000 * (blockNumber - currentBlockNumber);

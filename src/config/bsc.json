@@ -5,7 +5,7 @@
   "rpc": ["https://bsc-dataseed.binance.org/"],
   "subgraphUrl": "https://api.thegraph.com/subgraphs/name/yogi-fi/bsc",
   "explorer": "https://bscscan.com",
-  "exchangeUrl": "http://exchange.yogi.fi",
+  "exchangeUrl": "http://bsc.exchange.yogi.fi",
   "addresses": {
     "bFactory": "0x2Fab27B3B379b550AED296B7Fb48D7EfEAabda57",
     "bActions": "0xcd30F8eeBEa878c7967D86dE5C5Dac7EE18cdd14",

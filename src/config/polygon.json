@@ -4,8 +4,8 @@
   "defaultPrecision": 6,
   "rpc": ["https://rpc-mainnet.maticvigil.com/"],
   "subgraphUrl": "https://api.thegraph.com/subgraphs/name/yogi-fi/polygon",
-  "explorer": "https://explorer.matic.network/",
-  "exchangeUrl": "http://exchange.yogi.fi",
+  "explorer": "https://explorer.matic.network",
+  "exchangeUrl": "http://polygon.exchange.yogi.fi",
   "addresses": {
     "bFactory": "0x2Fab27B3B379b550AED296B7Fb48D7EfEAabda57",
     "bActions": "0xcd30F8eeBEa878c7967D86dE5C5Dac7EE18cdd14",
