@@ -82,7 +82,7 @@ export default {
   data() {
     return {
       modalWrapperOpen: false,
-      side: 0,
+      side: 0
     };
   },
   computed: {
@@ -110,7 +110,10 @@ export default {
         .filter(({ value }) => value > 0.001);
 
       const nativePrice = this.price.values[this.config.addresses.wnative];
-      const nativeBalance = formatUnits(this.web3.balances[config.native] || 0, 18);
+      const nativeBalance = formatUnits(
+        this.web3.balances[config.native] || 0,
+        18
+      );
       return [
         {
           address: config.native,
