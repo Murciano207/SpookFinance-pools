@@ -92,6 +92,7 @@
     "errMinTokenBalance": "Token balance in wei form needs to be at least 1,000,000. For example, WBTC has 8 decimals, so the minimum is 0.01 WBTC.",
     "nativeBuffer": "Keep some balance to pay for gas.",
     "exchange": "Exchange",
+    "farms": "Farms",
     "explorePools": "Explore pools",
     "failureOops": "Oops, something went wrong",
     "fee": "fee",
