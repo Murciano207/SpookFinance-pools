@@ -43,7 +43,7 @@
             </a>
           </li>
           <li>
-            <a href="https://yogi.fi/buy" target="_blank">
+            <a :href="config.crowdsaleUrl" target="_blank">
               {{ $t('Buy') }}
               <Icon name="external-link" class="ml-1" />
             </a>

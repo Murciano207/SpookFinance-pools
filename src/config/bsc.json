@@ -7,6 +7,7 @@
   "explorer": "https://bscscan.com",
   "exchangeUrl": "http://bsc.exchange.yogi.fi",
   "farmsUrl": "http://bsc.farms.yogi.fi",
+  "crowdsaleUrl": "http://yogi.fi/buy/bsc",
   "addresses": {
     "bFactory": "0x2Fab27B3B379b550AED296B7Fb48D7EfEAabda57",
     "bActions": "0xcd30F8eeBEa878c7967D86dE5C5Dac7EE18cdd14",
