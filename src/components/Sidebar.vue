@@ -37,7 +37,7 @@
             </a>
           </li>
           <li>
-            <a :href="config.farms" target="_blank">
+            <a :href="config.farmsUrl" target="_blank">
               {{ $t('farms') }}
               <Icon name="external-link" class="ml-1" />
             </a>
