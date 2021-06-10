@@ -43,12 +43,6 @@
             </a>
           </li>
           <li>
-            <a :href="config.crowdsaleUrl" target="_blank">
-              {{ $t('Buy') }}
-              <Icon name="external-link" class="ml-1" />
-            </a>
-          </li>
-          <li>
             <a @click="modalOpen = true" v-text="$t('about')" />
           </li>
         </ul>
