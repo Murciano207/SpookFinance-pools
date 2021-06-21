@@ -16,6 +16,7 @@
 
 <script>
 import { getTokenLogoUrl } from '@/_yogi/utils';
+import config from '@/config';
 
 export default {
   props: ['address', 'symbol', 'size', 'custom'],
@@ -36,7 +37,7 @@ export default {
     },
     tokenLogoUrl() {
       if (this.custom) {
-        return `https://raw.githubusercontent.com/yogi/yogi-assets/master/assets/${this.address}.png`;
+        return `https://raw.githubusercontent.com/yogi-fi/yogi-assets/master/assets/${config.chainId}/${this.address}.png`;
       }
       return getTokenLogoUrl(this.address);
     }

@@ -37,6 +37,12 @@
             </a>
           </li>
           <li>
+            <a :href="config.farmsUrl" target="_blank">
+              {{ $t('farms') }}
+              <Icon name="external-link" class="ml-1" />
+            </a>
+          </li>
+          <li>
             <a @click="modalOpen = true" v-text="$t('about')" />
           </li>
         </ul>

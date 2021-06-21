@@ -255,7 +255,6 @@ const actions = {
       ]);
       const account = accounts.length > 0 ? accounts[0] : null;
       const name = '';
-      
       // FIXME: restore once ENS is ported
       // if (config.chainId === 1) name = await provider.lookupAddress(account);
       commit('LOAD_PROVIDER_SUCCESS', {
@@ -281,7 +280,7 @@ const actions = {
       dispatch('getUserPoolShares')
     ]);
   },
-  changeSubdomain: async ({ }, chainId: number) => {
+  changeSubdomain: async (_, chainId: number) => {
     if (chainId === 56) {
       location.replace('https://bsc.pools.yogi.fi');
     } else if (chainId === 137) {
