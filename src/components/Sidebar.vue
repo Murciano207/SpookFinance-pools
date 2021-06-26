@@ -43,6 +43,12 @@
             </a>
           </li>
           <li>
+            <a href="https://snapshot.org/#/yogi-fi.eth" target="_blank">
+              {{ $t('vote') }}
+              <Icon name="external-link" class="ml-1" />
+            </a>
+          </li>
+          <li>
             <a @click="modalOpen = true" v-text="$t('about')" />
           </li>
         </ul>

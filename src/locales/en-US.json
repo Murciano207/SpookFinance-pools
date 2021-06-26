@@ -93,6 +93,7 @@
     "nativeBuffer": "Keep some balance to pay for gas.",
     "exchange": "Exchange",
     "farms": "Farms",
+    "vote": "Vote",
     "explorePools": "Explore pools",
     "failureOops": "Oops, something went wrong",
     "fee": "fee",
